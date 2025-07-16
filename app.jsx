@@ -66,17 +66,17 @@ export default function EduPilot() {
   const [fileUrl, setFileUrl] = useState(null);
 
   const generateLesson = async () => {
-    setLoading(true);
-    const res = await fetch("edupilot-backend-production.up.railway.app", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ teacher, school, grade, subject, topic, objective })
-    });
-    const blob = await res.blob();
-    const url = window.URL.createObjectURL(blob);
-    setFileUrl(url);
-    setLoading(false);
-  };
+  setLoading(true);
+  const res = await fetch("https://edupilot-backend-production.up.railway.app/generate-lesson", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ teacher, school, grade, subject, topic, objective })
+  });
+  const blob = await res.blob();
+  const url = window.URL.createObjectURL(blob);
+  setFileUrl(url);
+  setLoading(false);
+};
 
   return (
     <div style={{ padding: '2rem', maxWidth: '600px', margin: 'auto' }}>
