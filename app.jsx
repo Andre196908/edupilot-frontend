@@ -67,7 +67,7 @@ export default function EduPilot() {
 
   const generateLesson = async () => {
     setLoading(true);
-    const res = await fetch("https://your-api-url.com/generate-lesson", {
+    const res = await fetch("edupilot-backend-production.up.railway.app", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ teacher, school, grade, subject, topic, objective })
